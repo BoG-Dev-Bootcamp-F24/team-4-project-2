@@ -27,7 +27,7 @@ const signuppage: React.FC = () => {
                 </form>
                 <div>
                     <p className={styles.centered_text}>
-                        Already have an account? <Link href="../login">Sign in</Link>
+                        Already have an account? <Link href="../login" className={styles.link}>Sign in</Link>
                     </p>
                 </div>
             </div>

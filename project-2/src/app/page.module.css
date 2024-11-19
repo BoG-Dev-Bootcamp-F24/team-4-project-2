@@ -1,8 +1,8 @@
 #title_card {
   height: 50px;
   vertical-align: middle;
-  padding: 10px;
-  box-shadow: 0x 20px;
+  padding: 12px;
+  border-bottom: 3px solid lightgray;
 }
 
 #title_card_text {
@@ -17,7 +17,7 @@
 }
 
 .form_part {
-  width: 300px;
+  width: 500px;
   margin: 10px;
   height: 50px;
   border: none;
@@ -26,7 +26,7 @@
 
 .red_button {
   margin-top: 25px;
-  width: 300px;
+  width: 500px;
   height: 50px;
   border: none;
   background-color: red;
@@ -41,4 +41,8 @@
 .centered_text {
   margin-top: 10px;
   text-align: center;
+}
+
+.link {
+  font-weight: bold;
 }
