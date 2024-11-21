@@ -1,8 +1,7 @@
 #title_card {
-  height: 50px;
-  vertical-align: middle;
-  padding: 12px;
-  border-bottom: 3px solid lightgray;
+  height: 10vh;
+  padding: 3vh;
+  border-bottom: 2px solid lightgray;
 }
 
 #title_card_text {
@@ -13,7 +12,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  vertical-align: middle;
 }
 
 .form_part {
@@ -49,4 +47,22 @@
 
 .link {
   font-weight: bold;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 200px;
+  align-items: flex-start;
+  padding: 25px;
+  border-right: 1px solid lightgray;
+}
+
+.sidebtn {
+  background: none;
+  border: none;
+  margin: 10px;
+  height: 20%;
+  font-size: large;
 }
