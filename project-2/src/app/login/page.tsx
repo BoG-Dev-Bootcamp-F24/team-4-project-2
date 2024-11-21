@@ -25,6 +25,7 @@ const loginpage: React.FC = () => {
 
             if (response.ok) {
                 sessionStorage.setItem("currentPage", "training")
+                sessionStorage.setItem("login", "yes")
                 router.push('/dashboard/traininglog')
             }
         } catch (error) {

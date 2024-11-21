@@ -36,6 +36,7 @@ const signuppage: React.FC = () => {
 
                     sessionStorage.setItem("name", fullName);
                     sessionStorage.setItem("currentPage", "training")
+                    sessionStorage.setItem("login", "yes")
                     router.push('/dashboard/traininglog')
                 }
             }

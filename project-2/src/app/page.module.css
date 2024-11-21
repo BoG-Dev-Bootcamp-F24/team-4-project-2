@@ -100,8 +100,21 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  border-top: 3px solid lightgray;
+  border: 1px solid lightgray;
   padding-left: 1vh;
   padding-top: 1vh;
+  height: 8vh;
   width: 200px;
+}
+
+.horizontalItems {
+  display: flex;
+  flex-direction: row;
+}
+
+.userGrid {
+  padding: 10vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px 20px;
 }

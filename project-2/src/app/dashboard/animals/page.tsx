@@ -10,7 +10,7 @@ const animalspage: React.FC = () => {
                 <div>
                     <Titlecard />
                 </div>
-                <div>
+                <div className={styles.horizontalItems}>
                     <Sidebar />
                 </div>
             </div>

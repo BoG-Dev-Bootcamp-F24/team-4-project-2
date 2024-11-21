@@ -3,33 +3,22 @@
 import styles from '@/app/page.module.css'
 import { useEffect, useState } from 'react';
 
-const usercard = () => {
-    const [user, setUser] = useState<string | null>("User");
-    const [admin, setAdmin] = useState<string | null>(null);
-    const [initial, setInitial] = useState<string | null>("U");
+interface UsercardProps {
+    user: string | null;
+    admin: string | null;
+}
 
-    useEffect(() => {
-        if (sessionStorage.getItem("name") != null) {
-            const theName = sessionStorage.getItem("name")
-            setUser(theName);
-
-            if (theName) {
-                setInitial(theName.charAt(0));
-            }
-        }
-
-        if (sessionStorage.getItem("admin") != "") {
-            const isAdmin = sessionStorage.getItem("admin");
-            setAdmin(isAdmin);
-        }
-    }, []);
+const usercard = ({ user, admin }: UsercardProps) => {
+    const name = user ? user : "User";
+    const initial = user ? user.charAt(0) : "U";
+    const isAdmin = admin ? "admin" : null;
 
     return (
         <div id={styles.usercard}>
             <div id={styles.userCircle}>{initial}</div>
             <div>
-                <h4>{user}</h4>
-                {admin && <p>Admin</p>}
+                <h4>{name}</h4>
+                {isAdmin && <p>Admin</p>}
             </div>
         </div>
     )

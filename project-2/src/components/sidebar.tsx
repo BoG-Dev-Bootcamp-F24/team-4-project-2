@@ -7,7 +7,8 @@ import Usercard from './usercard'
 
 const sidebar = () => {
     const [page, setPage] = useState<string | null>("training");
-    const [admin, setAdmin] = useState<string | null>("training");
+    const [admin, setAdmin] = useState<string | null>(null);
+    const [user, setUser] = useState<string | null>("User");
     const router = useRouter();
 
     useEffect(() => {
@@ -19,6 +20,11 @@ const sidebar = () => {
         if (sessionStorage.getItem("admin") != "") {
             const isAdmin = sessionStorage.getItem("admin");
             setAdmin(isAdmin);
+        }
+
+        if (sessionStorage.getItem("name") != null) {
+            const theName = sessionStorage.getItem("name")
+            setUser(theName);
         }
     })
 
@@ -69,7 +75,7 @@ const sidebar = () => {
                 }
             </div>
             <div>
-                <Usercard />
+                <Usercard user={user} admin={admin} />
             </div>
         </div>
     )
