@@ -16,7 +16,7 @@ const loginpage: React.FC = () => {
         event.preventDefault()
 
         try {
-            router.push('/dashboard/animals')
+            router.push('/dashboard/traininglog')
         } catch (error) {
             console.error(error)
         }
@@ -39,7 +39,7 @@ const loginpage: React.FC = () => {
                 </form>
                 <div>
                     <p className={styles.centered_text}>
-                        Don't have an account? <Link href="/login/signup" className={styles.link}>Sign up</Link>
+                        Don't have an account? <Link href="/signup" className={styles.link}>Sign up</Link>
                     </p>
                 </div>
             </div>

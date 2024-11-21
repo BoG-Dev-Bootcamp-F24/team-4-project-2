@@ -3,16 +3,6 @@ import Titlecard from "@/components/titlecard"
 import Sidebar from "@/components/sidebar"
 import styles from '@/app/page.module.css'
 
-interface TrainingLog {
-    _id: ObjectId;
-    user: ObjectId;
-    animal: string;
-    title: ObjectId;
-    date: Date;
-    description: string;
-    hours: number;
-}
-
 const admintraining: React.FC = () => {
     return (
         <div>

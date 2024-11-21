@@ -7,14 +7,6 @@ import Titlecard from "@/components/titlecard"
 import Link from 'next/link'
 import styles from '@/app/page.module.css'
 
-interface User {
-    _id: ObjectId;
-    fullName: string;
-    email: string;
-    password: string;
-    admin: boolean;
-}
-
 const signuppage: React.FC = () => {
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
@@ -27,7 +19,7 @@ const signuppage: React.FC = () => {
         event.preventDefault()
 
         try {
-            router.push('/dashboard/animals')
+            router.push('/dashboard/traininglog')
         } catch (error) {
             console.error(error)
         }
