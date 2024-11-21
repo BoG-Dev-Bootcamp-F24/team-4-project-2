@@ -24,6 +24,15 @@ const loginpage: React.FC = () => {
             })
 
             if (response.ok) {
+                const json = await response.json();
+
+                if (json.admin) {
+                    sessionStorage.setItem("admin", "admin");
+                } else {
+                    sessionStorage.setItem("admin", "");
+                }
+
+                sessionStorage.setItem("name", json.fullName)
                 sessionStorage.setItem("currentPage", "training")
                 sessionStorage.setItem("login", "yes")
                 router.push('/dashboard/traininglog')

@@ -33,7 +33,7 @@ const AnimalCard = ({ name, breed, owner, hoursTrained, profilePicture }: Animal
     return (
         <div id={styles.animalcard}>
             <div>
-                <img src={picture} alt="pic" width="200" height="100"></img>
+                <img src={picture} alt="pic" width="200" height="150"></img>
             </div>
             <div className={styles.horizontalItems}>
                 <div id={styles.userCircle}>{initial}</div>

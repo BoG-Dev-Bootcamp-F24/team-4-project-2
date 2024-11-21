@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     });
 
     if (res) {
-        return Response.json({ message: 'success' });
+        return Response.json(res);
     }
     
     return Response.error();
