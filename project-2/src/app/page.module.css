@@ -1,11 +1,12 @@
 #title_card {
   height: 10vh;
-  padding: 3vh;
   border-bottom: 2px solid lightgray;
+  display: flex;
+  align-items: center;
 }
 
 #title_card_text {
-  margin-left: 20px;
+  margin-left: 4vh;
 }
 
 .vertical_stack {
@@ -54,15 +55,53 @@
   flex-direction: column;
   height: 90vh;
   width: 200px;
-  align-items: flex-start;
-  padding: 25px;
+  align-items: center;
+  justify-content: space-between;
   border-right: 1px solid lightgray;
 }
 
 .sidebtn {
+  height: 40px;
+  width: 150px;
   background: none;
   border: none;
   margin: 10px;
-  height: 20%;
   font-size: large;
+}
+
+.sidebtnclicked {
+  height: 40px;
+  width: 150px;
+  background-color: rgb(214, 24, 24);
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: large;
+}
+
+#sideLine {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#userCircle {
+  background-color: rgb(214, 24, 24);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+#usercard {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-top: 3px solid lightgray;
+  padding-left: 1vh;
+  padding-top: 1vh;
+  width: 200px;
 }

@@ -1,22 +1,32 @@
 'use client';
 
-import React, { useState } from 'react'
+import React from 'react'
 import Titlecard from "@/components/titlecard"
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import styles from '@/app/page.module.css'
 
 const loginpage: React.FC = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     const router = useRouter();
 
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault()
+        const email = event.target.elements.emailBox.value;
+        const password = event.target.elements.passwordBox.value;
 
         try {
-            router.push('/dashboard/traininglog')
+            const response = await fetch('/api/user/verify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            })
+
+            if (response.ok) {
+                sessionStorage.setItem("currentPage", "training")
+                router.push('/dashboard/traininglog')
+            }
         } catch (error) {
             console.error(error)
         }
@@ -33,8 +43,8 @@ const loginpage: React.FC = () => {
                     Login
                 </h1>
                 <form onSubmit={handleSubmit} className={styles.vertical_stack}>
-                    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required className={styles.form_part}></input>
-                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required className={styles.form_part}></input>
+                    <input type="email" placeholder="Email" name="emailBox" required className={styles.form_part}></input>
+                    <input type="password" placeholder="Password" name="passwordBox" required className={styles.form_part}></input>
                     <input type="submit" value="Log in" required className={styles.red_button}></input>
                 </form>
                 <div>

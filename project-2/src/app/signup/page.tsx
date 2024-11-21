@@ -1,25 +1,44 @@
 'use client';
 
-import React, { useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation'
-import { ObjectId } from "mongodb";
 import Titlecard from "@/components/titlecard"
 import Link from 'next/link'
 import styles from '@/app/page.module.css'
 
 const signuppage: React.FC = () => {
-    const [fullName, setFullName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-
     const router = useRouter();
 
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = async (event: any) => {
         event.preventDefault()
+        const fullName = event.target.elements.fullNameBox.value;
+        const email = event.target.elements.emailBox.value;
+        const password = event.target.elements.passwordBox.value;
+        const confirmPassword = event.target.elements.confirmPassBox.value;
+        const admin = event.target.elements.adminBox.checked;
 
         try {
-            router.push('/dashboard/traininglog')
+            if (password.length > 0 && password == confirmPassword) {
+                const response = await fetch('/api/user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ fullName, email, password, admin }),
+                })
+
+                if (response.ok) {
+                    if (admin) {
+                        sessionStorage.setItem("admin", "admin");
+                    } else {
+                        sessionStorage.setItem("admin", "");
+                    }
+
+                    sessionStorage.setItem("name", fullName);
+                    sessionStorage.setItem("currentPage", "training")
+                    router.push('/dashboard/traininglog')
+                }
+            }
         } catch (error) {
             console.error(error)
         }
@@ -38,12 +57,12 @@ const signuppage: React.FC = () => {
                     Create Account
                 </h1>
                 <form onSubmit={handleSubmit} className={styles.vertical_stack}>
-                    <input type="text" placeholder="Full Name" required className={styles.form_part}></input>
-                    <input type="email" placeholder="Email" required className={styles.form_part}></input>
-                    <input type="password" placeholder="Password" required className={styles.form_part}></input>
-                    <input type="password" placeholder="Confirm Password" required className={styles.form_part}></input>
+                    <input type="text" placeholder="Full Name" required className={styles.form_part} name="fullNameBox"></input>
+                    <input type="email" placeholder="Email" required className={styles.form_part} name="emailBox"></input>
+                    <input type="password" placeholder="Password" required className={styles.form_part} name="passwordBox"></input>
+                    <input type="password" placeholder="Confirm Password" required className={styles.form_part} name="confirmPassBox"></input>
                     <div>
-                        <input type="checkbox"></input> Admin Access
+                        <input type="checkbox" name="adminBox"></input> Admin Access
                     </div>
                     <input type="submit" value="Sign up" className={styles.red_button}></input>
                 </form>

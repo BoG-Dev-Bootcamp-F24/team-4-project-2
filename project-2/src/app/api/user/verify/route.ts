@@ -14,5 +14,6 @@ export async function POST(request: Request) {
     if (res) {
         return Response.json({ message: 'success' });
     }
+    
     return Response.error();
 }
